@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:5.5
+FROM mhart/alpine-node:6.8
 MAINTAINER José Padilla <hello@jpadilla.com>
 
 WORKDIR /src
