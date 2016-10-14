@@ -2,7 +2,7 @@
 'use strict';
 const express = require('express');
 const cluster = require('express-cluster');
-const FastBootServer = require('ember-fastboot-server');
+const FastBootServer = require('fastboot-app-server');
 const basicAuth = require('basic-auth');
 
 const DEFAULT_PORT = 3000;
