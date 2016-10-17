@@ -1,9 +1,9 @@
 /* eslint-disable strict, prefer-reflect */
 'use strict';
-const express = require('express');
-const cluster = require('express-cluster');
+//const express = require('express');
+//const cluster = require('express-cluster');
 const FastBootServer = require('fastboot-app-server');
-const basicAuth = require('basic-auth');
+//const basicAuth = require('basic-auth');
 
 const DEFAULT_PORT = 3000;
 const HTTP_401_UNAUTHORIZED = 401;
@@ -42,29 +42,9 @@ function log() {
   console.log(...args);
 }
 
-cluster(function() {
-  let listener;
-  const app = express();
+let server = new FastBootAppServer({
+  distPath: OUTPUT_PATH,
+  gzip: true // Optional - Enables gzip compression.
+});
 
-  const server = new FastBootServer({
-    distPath: OUTPUT_PATH,
-    ui: {
-      writeLine: function() {
-        log(...arguments);
-      }
-    }
-  });
-
-  if (USERNAME && PASSWORD) {
-    app.use(httpBasicAuth(USERNAME, PASSWORD));
-  }
-
-  //app.get('/*', server.middleware());
-
-  listener = app.listen(PORT, function() {
-    const host = listener.address().address;
-    const port = listener.address().port;
-
-    log('FastBoot server listening at http://%s:%s', host, port);
-  });
-}, CLUSTER_CONFIG);
+server.start();
