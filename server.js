@@ -59,7 +59,7 @@ cluster(function() {
     app.use(httpBasicAuth(USERNAME, PASSWORD));
   }
 
-  app.get('/*', server.middleware());
+  //app.get('/*', server.middleware());
 
   listener = app.listen(PORT, function() {
     const host = listener.address().address;
