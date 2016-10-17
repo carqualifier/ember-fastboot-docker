@@ -42,7 +42,7 @@ function log() {
   console.log(...args);
 }
 
-let server = new FastBootAppServer({
+let server = new FastBootServer({
   distPath: OUTPUT_PATH,
   gzip: true // Optional - Enables gzip compression.
 });
